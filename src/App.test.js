@@ -1,18 +1,20 @@
 import React from "react";
 import App from "./App";
 import { fetchShow as mockFetchShow } from "./api/fetchShow";
-import userEvent from "@testing-library/user-event"; //userEvent is used for .click(button) divs
+import userEvent from "@testing-library/user-event"; //userEvent is used for .click(button) divs pretty much like fireEvent
 import {
   render,
   fireEvent,
   waitFor,
   findByText,
   getByText,
-} from "@testing-library/react"; //fireEvent is used for .click(button)
+} from "@testing-library/react"; 
 
 jest.mock("./api/fetchShow");
 //console.log(mockFetchShow)
 
+
+//mock data (duh)
 const testData = {
   data: {
     id: 2993,
@@ -148,7 +150,7 @@ test("successfully renders data from API", async () => {
 
   //render App
   const { findByText, getAllByTestId } = render(<App />);
-  await findByText(/Fetching data.../i);
+  findByText(/Fetching data.../i);
 
   const dropdown = await findByText(/Select a season/i);
   userEvent.click(dropdown);

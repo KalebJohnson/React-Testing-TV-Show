@@ -13,8 +13,15 @@ const mockData = {
 };
 
 test('Renders Episodes without props, and again with props', () => {
+
+    //Arrange!
     const { queryAllByText, rerender } = render(<Episodes episodes={[]} />);
-    expect(queryAllByText(/season/i) === null);
+     expect(queryAllByText(/season/i) === null);
+
+    //Act!
     rerender(<Episodes episodes={[mockData]} />);
+
+    //Assert!
     expect(queryAllByText(/name/i)).toHaveLength(1);
+
 });
